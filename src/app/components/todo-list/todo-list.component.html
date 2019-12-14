@@ -1,0 +1,13 @@
+<div class="todo-list">
+    <h2>{{ getName() }}, Add What you want above</h2>
+</div>
+
+<div class="todo-list">
+    <ul>
+        <li *ngFor="let item of items">
+            <input class="checked" type="checkbox" [checked]="item.done" data-checked="1">
+            <span>{{item.action}}</span>
+            <a class="remove" data-id="1">Delete</a>
+        </li>
+    </ul>
+</div>
