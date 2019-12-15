@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TodoItem } from '../../services/todo-item';
+import { Model } from '../../services/model';
 
 @Component({
   selector: 'app-todo-list',
@@ -7,22 +7,20 @@ import { TodoItem } from '../../services/todo-item';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit {
-  user;
-  items;
+  model = new Model();
 
   constructor() { 
-    this.user = "Adam";
-    this.items = [
-      new TodoItem("Buy Flowers", false),
-      new TodoItem("Get Shoes", true),
-      new TodoItem("Call James", false)
-    ];
+    
   }
 
   ngOnInit() {
   }
 
   getName(){
-    return this.user;
+    return this.model.user;
+  }
+
+  getTodoItems(){
+    return this.model.items;
   }
 }
