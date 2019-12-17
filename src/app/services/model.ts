@@ -1,20 +1,52 @@
 import { TodoItem } from './todo-item';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class Model {
 	user: string = 'Adam';
-	items: TodoItem[] = [
-		new TodoItem('Buy Flowers', false),
-		new TodoItem('Get Shoes', true),
-		new TodoItem('Call James', false)
-	];
+	lastId: number = 0;
+	todos: TodoItem[] = [];
 
 	constructor() {}
 
-	newItem(item: string) {
-		this.items.push(new TodoItem(item, false));
+	addTodo(todo: TodoItem): Model {
+		if (!todo.id) {
+			todo.id = ++this.lastId;
+		}
+		this.todos.push(todo);
+		return this;
 	}
 
-	removeItem(id: number) {
-		this.items.splice(id, 1);
+	deleteTodoById(id: number): Model {
+		if (this.todos.length < 2) {
+			this.todos = [];
+		} else {
+			this.todos = this.todos.filter((todo) => todo.id !== id);
+		}
+		return this;
+	}
+
+	updateTodoById(id: number, values: Object = {}): TodoItem {
+		let todo = this.getTodoById(id);
+		if (!todo) {
+			return null;
+		}
+		Object.assign(todo, values);
+		return todo;
+	}
+
+	getAllTodos(): TodoItem[] {
+		return this.todos;
+	}
+
+	getTodoById(id: number): TodoItem {
+		return this.todos.filter((todo) => todo.id === id).pop();
+	}
+
+	toggleTodoComplete(todo: TodoItem) {
+		let updateTodo = this.updateTodoById(todo.id, {
+			done: !todo.done
+		});
+		return updateTodo;
 	}
 }

@@ -19,7 +19,7 @@ export class TodoListComponent implements OnInit {
 	}
 
 	getTodoItems() {
-		return this.model.items;
+		return this.model.todos;
 	}
 
 	removeItem(id: number) {

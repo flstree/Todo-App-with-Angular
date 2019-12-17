@@ -10,10 +10,11 @@ export class AppComponent {
 	model = new Model();
 
 	getInput($event) {
-		this.model.newItem($event);
+		this.model.addTodo($event);
 	}
 
 	removeItem($event) {
-		this.model.removeItem($event);
+		console.log($event);
+		this.model = this.model.deleteTodoById($event);
 	}
 }

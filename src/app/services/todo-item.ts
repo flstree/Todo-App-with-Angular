@@ -1,10 +1,9 @@
 export class TodoItem {
-  action;
-  done;
+	id: number;
+	action: string = '';
+	done: boolean = false;
 
-  constructor(action, done) {
-    this.action = action;
-    this.done = done;
-   }
-
+	constructor(values: Object = {}) {
+		Object.assign(this, values);
+	}
 }

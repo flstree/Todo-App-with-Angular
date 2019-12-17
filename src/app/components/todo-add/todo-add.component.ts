@@ -13,6 +13,6 @@ export class TodoAddComponent implements OnInit {
 	ngOnInit() {}
 
 	saveTodo(todo) {
-		this.addInput.emit(todo.value);
+		this.addInput.emit({ action: todo.value, done: false });
 	}
 }
