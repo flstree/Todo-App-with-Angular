@@ -4,10 +4,10 @@
 
 <div class="todo-list">
     <ul>
-        <li *ngFor="let item of getTodoItems()">
+        <li *ngFor="let item of getTodoItems(); let i = index;">
             <input class="checked" type="checkbox" [checked]="item.done" data-checked="1">
             <span>{{item.action}}</span>
-            <a class="remove" data-id="1">Delete</a>
+            <a class="remove" (click)="removeItem(i)">Delete</a>
         </li>
     </ul>
 </div>

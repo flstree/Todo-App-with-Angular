@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-todo-add',
-  templateUrl: './todo-add.component.html',
-  styleUrls: ['./todo-add.component.css']
+	selector: 'app-todo-add',
+	templateUrl: './todo-add.component.html',
+	styleUrls: [ './todo-add.component.css' ]
 })
 export class TodoAddComponent implements OnInit {
+	@Output() addInput: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+	constructor() {}
 
-  ngOnInit() {
-  }
+	ngOnInit() {}
 
+	saveTodo(todo) {
+		this.addInput.emit(todo.value);
+	}
 }

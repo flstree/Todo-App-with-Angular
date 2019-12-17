@@ -1,5 +1,5 @@
 <div id="wrapper">
-    <app-todo-add>Add new Todo</app-todo-add>
+    <app-todo-add (addInput)="getInput($event)">Add new Todo</app-todo-add>
 
-    <app-todo-list>Todo List</app-todo-list>
+    <app-todo-list [model]="model" (deleteItem)="removeItem($event)">Todo List</app-todo-list>
 </div>
